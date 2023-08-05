@@ -1,4 +1,4 @@
-FROM tomcat:9.0-jdk17-temurin-focal
+FROM tomcat:10.1-jdk17-temurin-focal
 
 LABEL maintainer="info@pmoscode.de"
 
