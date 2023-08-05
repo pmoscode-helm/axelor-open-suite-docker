@@ -3,7 +3,7 @@ name: Deploy to Dockerhub
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 10 * * *"
+    - cron: "0 3 * * *"
   push:
     tags:
       - "v*.*.*"
