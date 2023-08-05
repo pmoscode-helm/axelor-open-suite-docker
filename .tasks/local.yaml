@@ -1,0 +1,33 @@
+version: 3
+
+tasks:
+  start-postgres:
+    desc: Starts Postgresql for local development
+    cmds:
+      - docker compose up -d postgres
+      - docker compose logs -f postgres
+
+  stop-postgres:
+    desc: Stops local Postgresql
+    cmds:
+      - docker compose down postgres
+    ignore_error: true
+
+  start-axelor:
+    desc: Starts Axelor Open Suite for local development
+    cmds:
+      - docker compose up -d axelor
+      - docker compose logs -f axelor
+
+  stop-axelor:
+    desc: Stops local Axelor Open Suite
+    cmds:
+      - docker compose down axelor
+      - docker compose down change-vol-ownership
+    ignore_error: true
+
+  remove-volumes:
+    desc: Remove all data volumes (Postgresql and Axelor)
+    cmds:
+      - docker volume rm axelor-open-suite_axelor_data_files axelor-open-suite_axelor_data_tomcat
+      - docker volume rm axelor-open-suite_postgres_data

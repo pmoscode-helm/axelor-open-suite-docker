@@ -1,0 +1,62 @@
+version: '3'
+
+services:
+  change-vol-ownership:
+    image: ubuntu
+    user: "root"
+    volumes:
+      - axelor_data_files:/tmp/data
+      - axelor_data_tomcat:/tmp/tomcat
+    command: chown -R 1000:1000 /tmp/data/ && chown -R 1000:1000 /tmp/tomcat/
+
+  axelor:
+    build:
+      dockerfile: Dockerfile
+    environment:
+      AXELOR_CONFIG_DB_DEFAULT_URL: jdbc:postgresql://postgres:5432/axelor
+      AXELOR_CONFIG_DB_DEFAULT_USER: axelor
+      AXELOR_CONFIG_DB_DEFAULT_PASSWORD: axelorPWD
+      AXELOR_CONFIG_APPLICATION_HOME: localhost:8080
+      AXELOR_CONFIG_APPLICATION_MODE: dev
+      AXELOR_CONFIG_APPLICATION_LOCALE: de_DE
+      AXELOR_CONFIG_APPLICATION_BASE-URL: localhost
+      AXELOR_CONFIG_DATA_UPLOAD_DIR: "/axelor/.axelor/attachments"
+      AXELOR_CONFIG_DATA_UPLOAD_MAX-SIZE: 100
+      AXELOR_CONFIG_DATA_EXPORT_DIR: "{user.home}/.axelor/export"
+      AXELOR_CONFIG_DATA_IMPORT_DEMO-DATA: true
+    volumes:
+      - axelor_data_files:/axelor/.axelor/attachments
+      - axelor_data_tomcat:/usr/local/tomcat/webapps
+    ports:
+      - "8080:8080"
+    networks:
+      - axelor-net
+    depends_on:
+      postgres:
+        condition: service_started
+      change-vol-ownership:
+        condition: service_completed_successfully
+
+  postgres:
+    image: postgres:15.3-alpine3.18
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-database.sh:/docker-entrypoint-initdb.d/init-database.sh
+    environment:
+      POSTGRES_PASSWORD: superuser
+    ports:
+      - "5432:5432"
+    networks:
+      - axelor-net
+
+volumes:
+  postgres_data:
+    driver: local
+  axelor_data_files:
+    driver: local
+  axelor_data_tomcat:
+    driver: local
+
+networks:
+  axelor-net:
+    name: axelor-net
