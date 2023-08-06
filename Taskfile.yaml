@@ -10,13 +10,13 @@ vars:
     sh: curl --silent "https://api.github.com/repos/{{ .REPO }}/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/'
 
 tasks:
-  get-latest-artifact:
+  get-artifact:
     desc: Downloads the lastest Tomcat .war release of Axelor Open Suite
     silent: true
     cmds:
       - wget -O released_war_file/axelor.war https://github.com/axelor/axelor-open-suite/releases/download/{{.VERSION}}/axelor-erp-{{.VERSION}}.war
 
-  build-docker-image:
+  build:
     desc: Builds the docker image for latest Axelor release version
     cmds:
       - docker buildx build -t axelor-os:{{ .VERSION }} .
