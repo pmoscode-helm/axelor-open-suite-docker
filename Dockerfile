@@ -2,7 +2,7 @@ FROM tomcat:9.0-jdk17-temurin-focal
 
 LABEL maintainer="info@pmoscode.de"
 
-RUN useradd -s /usr/sbin/nologin -m axelor
+RUN useradd -s /usr/sbin/nologin -u 10101 -g 10101 -m axelor
 RUN chown -R axelor:axelor /usr/local/tomcat
 
 USER axelor

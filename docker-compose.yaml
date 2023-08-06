@@ -7,7 +7,7 @@ services:
     volumes:
       - axelor_data_files:/tmp/data
       - axelor_data_tomcat:/tmp/tomcat
-    command: chown -R 1000:1000 /tmp/data/ && chown -R 1000:1000 /tmp/tomcat/
+    command: chown -R 10101:10101 /tmp/data/ && chown -R 10101:10101 /tmp/tomcat/
 
   axelor:
     build:
