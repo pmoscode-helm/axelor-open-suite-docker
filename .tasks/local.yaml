@@ -16,7 +16,7 @@ tasks:
   start-axelor:
     desc: Starts Axelor Open Suite for local development
     cmds:
-      - docker compose up -d axelor
+      - docker compose up --build -d axelor
       - docker compose logs -f axelor
 
   stop-axelor:
@@ -29,5 +29,6 @@ tasks:
   remove-volumes:
     desc: Remove all data volumes (Postgresql and Axelor)
     cmds:
-      - docker volume rm axelor-open-suite_axelor_data_files axelor-open-suite_axelor_data_tomcat
-      - docker volume rm axelor-open-suite_postgres_data
+      - docker volume rm axelor-open-suite-docker_axelor_data_files axelor-open-suite-docker_axelor_data_tomcat
+      - docker volume rm axelor-open-suite-docker_postgres_data
+    ignore_error: true
