@@ -12,9 +12,11 @@ vars:
 tasks:
   get-artifact:
     desc: Downloads the lastest Tomcat .war release of Axelor Open Suite
+    dir: released_war_file
     silent: true
     cmds:
-      - wget -O released_war_file/axelor.war https://github.com/axelor/axelor-open-suite/releases/download/{{.VERSION}}/axelor-erp-{{.VERSION}}.war
+      - wget -O axelor.war https://github.com/axelor/axelor-open-suite/releases/download/{{.VERSION}}/axelor-erp-{{.VERSION}}.war
+      - touch {{.VERSION}}.version
 
   build:
     desc: Builds the docker image for latest Axelor release version
