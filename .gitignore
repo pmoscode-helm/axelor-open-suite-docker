@@ -1,2 +1,3 @@
 .idea
 released_war_file/*.war
+released_war_file/*.version
