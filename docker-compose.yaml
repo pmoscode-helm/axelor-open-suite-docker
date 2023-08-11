@@ -12,13 +12,14 @@ services:
       AXELOR_CONFIG_APPLICATION_MODE: dev
       AXELOR_CONFIG_APPLICATION_LOCALE: de_DE
       AXELOR_CONFIG_APPLICATION_BASE-URL: localhost
-      AXELOR_CONFIG_DATA_UPLOAD_DIR: "/axelor/.axelor/attachments"
+      AXELOR_CONFIG_DATA_UPLOAD_DIR: "/opt/data/attachments"
       AXELOR_CONFIG_DATA_UPLOAD_MAX-SIZE: 100
-      AXELOR_CONFIG_DATA_EXPORT_DIR: "{user.home}/.axelor/export"
+      AXELOR_CONFIG_DATA_EXPORT_DIR: "/opt/data/export"
       AXELOR_CONFIG_DATA_IMPORT_DEMO-DATA: true
+      ALLOW_EMPTY_PASSWORD: yes
     volumes:
-      - axelor_data_files:/axelor/.axelor/attachments
-      - axelor_data_tomcat:/usr/local/tomcat/webapps
+      - axelor_data_files:/opt/data
+      - axelor_data_tomcat:/bitnami/tomcat/webapps
     ports:
       - "8080:8080"
     networks:
