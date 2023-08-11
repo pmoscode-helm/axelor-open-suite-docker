@@ -23,7 +23,6 @@ tasks:
     desc: Stops local Axelor Open Suite
     cmds:
       - docker compose down axelor
-      - docker compose down change-vol-ownership
     ignore_error: true
 
   remove-volumes:
