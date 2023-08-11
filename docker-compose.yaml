@@ -1,14 +1,6 @@
 version: '3'
 
 services:
-  change-vol-ownership:
-    image: ubuntu
-    user: "root"
-    volumes:
-      - axelor_data_files:/tmp/data
-      - axelor_data_tomcat:/tmp/tomcat
-    command: chown -R 10101:10101 /tmp/data/ && chown -R 10101:10101 /tmp/tomcat/
-
   axelor:
     build:
       dockerfile: Dockerfile
@@ -34,8 +26,6 @@ services:
     depends_on:
       postgres:
         condition: service_started
-      change-vol-ownership:
-        condition: service_completed_successfully
 
   postgres:
     image: postgres:15.3-alpine3.18
