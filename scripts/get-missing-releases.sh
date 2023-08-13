@@ -17,6 +17,6 @@ echo " "
 echo Umtagged versions: ${MISSING[@]}
 echo " "
 
-JSON="[$(echo $MISSING | sed 's/ /, /g')]"
+JSON="[$(echo $MISSING | sed 's/ /,/g')]"
 
 echo "axelorTag=$( echo "$JSON" )" >> $GITHUB_OUTPUT
