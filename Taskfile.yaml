@@ -6,6 +6,7 @@ includes:
 
 env:
   AXELOR_REPO: axelor/axelor-open-suite
+  PMOSCODE_DOCKER: pmoscode/axelor-open-suite
 
 tasks:
   get-artifact:
@@ -13,6 +14,11 @@ tasks:
     silent: true
     cmds:
       - ./scripts/get-war-file.sh {{.CLI_ARGS}}
+
+  get-missing-artifacts:
+    desc: Builds the missing artifact versions.
+    cmds:
+      - ./scripts/get-missing-releases.sh
 
   build:
     desc: Builds the docker image for latest Axelor release version
