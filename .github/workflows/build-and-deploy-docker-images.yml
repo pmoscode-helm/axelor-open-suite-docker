@@ -18,6 +18,12 @@ jobs:
       - name: Get releases
         id: axTags
         run: task get-missing-artifacts
+
+      - name: debug
+        run: echo ${{ steps.axTags.outputs.axelorTag }}
+
+      - name: debug2
+        run: echo ${{ toJSON(steps.axTags.outputs.axelorTag) }}
     outputs:
       axTags: ${{ toJSON(steps.axTags.outputs.axelorTag) }}
 
