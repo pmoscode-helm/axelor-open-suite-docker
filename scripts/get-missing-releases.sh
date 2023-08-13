@@ -20,8 +20,5 @@ echo " "
 for value in ${MISSING}
 do
     echo "Adding ${value} to GITHUB_OUTPUT"
-    echo "axelorTag=${value}" >> $GITHUB_OUTPUT
-    # git tag -a ${value} -m "New Version $value"; git push https://oauth2:${REPO_ACCESS_TOKEN}@gitlab.com/pmoscode/axelor-docker.git HEAD:master --tags
+    echo -e "axelorTag=${value}\n" >> $GITHUB_OUTPUT
 done
-
-echo "Content of GITHUB_OUTPUT --> $GITHUB_OUTPUT"
