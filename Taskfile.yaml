@@ -4,19 +4,15 @@ includes:
   local:
     taskfile: .tasks/local.yaml
 
-vars:
-  REPO: axelor/axelor-open-suite
-  VERSION:
-    sh: curl --silent "https://api.github.com/repos/{{ .REPO }}/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/'
+env:
+  AXELOR_REPO: axelor/axelor-open-suite
 
 tasks:
   get-artifact:
     desc: Downloads the lastest Tomcat .war release of Axelor Open Suite
-    dir: released_war_file
     silent: true
     cmds:
-      - wget -O axelor.war https://github.com/axelor/axelor-open-suite/releases/download/{{.VERSION}}/axelor-erp-{{.VERSION}}.war
-      - touch {{.VERSION}}.version
+      - ./scripts/get-war-file.sh {{.CLI_ARGS}}
 
   build:
     desc: Builds the docker image for latest Axelor release version
