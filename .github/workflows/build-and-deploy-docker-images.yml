@@ -50,7 +50,10 @@ jobs:
             type=semver,pattern=v{{major}},value=${{ matrix.axTag }}
 
       - name: Echo it
-        run: echo "Version to tag -> ${{ matrix.axTag }} ## ${{ steps.meta.outputs.tags }}"
+        run: echo "Version to tag -> ${{ matrix.axTag }}"
+
+      - name: Echo it 2
+        run: echo "Docker tags -> ${{ steps.meta.outputs.tags }}"
 
 #      - name: Set up QEMU
 #        uses: docker/setup-qemu-action@v2
