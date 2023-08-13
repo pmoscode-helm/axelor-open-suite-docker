@@ -44,7 +44,7 @@ jobs:
         uses: arduino/setup-task@v1
 
       - name: Get latest Axelor .war release
-        run: task get-artifact
+        run: task get-artifact -- ${{github.ref_name}}
 
       - name: Build and push
         uses: docker/build-push-action@v4
