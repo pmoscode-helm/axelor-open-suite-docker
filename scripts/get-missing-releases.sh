@@ -17,8 +17,14 @@ echo " "
 echo Umtagged versions: ${MISSING[@]}
 echo " "
 
-for value in ${MISSING}
-do
-    echo "Adding ${value} to GITHUB_OUTPUT"
-    echo -e "axelorTag=${value}\n" >> $GITHUB_OUTPUT
-done
+# Set the internal field separator to the tab character.
+IFS=$',';
+
+# Echo the array.
+echo "axelorTag=${MISSING[*]}" >> $GITHUB_OUTPUT
+
+#for value in ${MISSING}
+#do
+#    echo "Adding ${value} to GITHUB_OUTPUT"
+#    echo "axelorTag=${value}" >> $GITHUB_OUTPUT
+#done
