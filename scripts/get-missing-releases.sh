@@ -17,14 +17,6 @@ echo " "
 echo Umtagged versions: ${MISSING[@]}
 echo " "
 
-# Set the internal field separator to the tab character.
-IFS=$',';
+JSON="[$(echo $MISSING | sed 's/ /, /g')]"
 
-# Echo the array.
-echo "axelorTag=${MISSING[*]}" >> $GITHUB_OUTPUT
-
-#for value in ${MISSING}
-#do
-#    echo "Adding ${value} to GITHUB_OUTPUT"
-#    echo "axelorTag=${value}" >> $GITHUB_OUTPUT
-#done
+echo "axelorTag=$( echo "$JSON" )" >> $GITHUB_OUTPUT
