@@ -35,6 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - matrix-prep-config
+    if: ${{ needs.matrix-prep-config.outputs.axTags != '' && toJson(fromJson(needs.matrix-prep-config.outputs.axTags)) != '[]' }}
     strategy:
       matrix:
         axTag: ${{ fromJSON(needs.matrix-prep-config.outputs.axTags) }}
