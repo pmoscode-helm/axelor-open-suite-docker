@@ -55,6 +55,15 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
+      - name: Use default OR workflow dispatch value
+        run: |
+          if [[ ${{ github.event_name == 'workflow_dispatch' }} == true ]]; then
+            USE_LATEST=${{ inputs.latest }}
+          else
+            USE_LATEST=true
+          fi
+          echo "USE_LATEST=$USE_LATEST" >> $GITHUB_ENV
+
       - name: Calculate Docker meta information
         id: meta
         uses: docker/metadata-action@v4
@@ -62,7 +71,7 @@ jobs:
           images: |
             pmoscode/axelor-open-suite
           flavor: |
-            latest=${{ inputs.latest }}
+            latest=${{ env.USE_LATEST }}
           tags: |
             type=semver,pattern=v{{version}},value=${{ matrix.axTag }}
             type=semver,pattern=v{{major}}.{{minor}},value=${{ matrix.axTag }}
