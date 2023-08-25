@@ -1,8 +1,8 @@
 version: 3
 
 includes:
-  local:
-    taskfile: .tasks/local.yaml
+  dev:
+    taskfile: .tasks/dev.yaml
 
 env:
   AXELOR_REPO: axelor/axelor-open-suite
@@ -19,8 +19,3 @@ tasks:
     desc: Builds the missing artifact versions.
     cmds:
       - ./scripts/get-missing-releases.sh
-
-  build:
-    desc: Builds the docker image for latest Axelor release version
-    cmds:
-      - docker buildx build -t axelor-os:{{ .VERSION }} .
