@@ -8,6 +8,4 @@ RUN mkdir -p /opt/data/attachments && mkdir -p /opt/data/export
 VOLUME /opt/data
 VOLUME /bitnami/tomcat/webapps
 
-#HEALTHCHECK none
-
 EXPOSE 8080
