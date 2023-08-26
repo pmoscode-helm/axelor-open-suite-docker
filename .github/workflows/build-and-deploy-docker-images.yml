@@ -100,8 +100,7 @@ jobs:
       - name: Update Docker Hub description
         uses: peter-evans/dockerhub-description@v3
         with:
-          # readme-filepath defaults to toplevel README.md, Only necessary if you have a dedicated file with your 'Notice for docker images'
-          # readme-filepath: Docker-hub-notice.md
+          readme-filepath: README-DOCKER-HUB.md
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           repository: pmoscode/axelor-open-suite
