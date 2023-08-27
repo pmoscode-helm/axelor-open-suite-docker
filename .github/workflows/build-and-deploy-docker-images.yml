@@ -105,5 +105,5 @@ jobs:
         with:
           readme-filepath: README-DOCKER-HUB.md
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          password: ${{ secrets.DOCKERHUB_TOKEN_FULL }}
           repository: pmoscode/axelor-open-suite
