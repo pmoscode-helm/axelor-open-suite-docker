@@ -7,7 +7,7 @@ services:
     environment:
       AXELOR_CONFIG_DB_DEFAULT_URL: jdbc:postgresql://postgres:5432/axelor
       AXELOR_CONFIG_DB_DEFAULT_USER: axelor
-      AXELOR_CONFIG_DB_DEFAULT_PASSWORD: axelorPWD
+      AXELOR_CONFIG_DB_DEFAULT_PASSWORD: axelorPWD  # !!! When you change this, change also the password in "init-database.sh" !!!
       AXELOR_CONFIG_APPLICATION_HOME: localhost:8080
       AXELOR_CONFIG_APPLICATION_MODE: dev
       AXELOR_CONFIG_APPLICATION_LOCALE: de_DE
@@ -23,7 +23,7 @@ services:
     ports:
       - "8080:8080"
     networks:
-      - axelor-net
+      - axelor
     depends_on:
       postgres:
         condition: service_started
@@ -38,7 +38,7 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - axelor-net
+      - axelor
 
 volumes:
   postgres_data:
@@ -49,5 +49,4 @@ volumes:
     driver: local
 
 networks:
-  axelor-net:
-    name: axelor-net
+  axelor:
