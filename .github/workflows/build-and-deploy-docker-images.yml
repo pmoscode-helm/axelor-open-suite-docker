@@ -8,6 +8,11 @@ on:
         required: true
         type: boolean
         default: true
+      predefined:
+        description: 'Set predefined versions to build'
+        required: false
+        type: string
+        default: ''
   schedule:
     - cron: "0 6 * * *"
 
@@ -23,7 +28,7 @@ jobs:
 
       - name: Get releases
         id: axTags
-        run: task get-missing-artifacts
+        run: task get-missing-artifacts -- ${{ inputs.predefined }}
 
       - name: Show missing releases
         run: echo ${{ steps.axTags.outputs.axelorTag }}
