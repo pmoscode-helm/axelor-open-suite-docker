@@ -32,7 +32,7 @@ task dev:remove-volumes # If you want to remove the volumes also
 
 If it fails to remove some, check the names with `docker volume list`
 
-If you want to run in inside Kubernetes, check this out: 
+If you want to run in inside Kubernetes, check this out: https://artifacthub.io/packages/helm/axelor-open-suite/axelor-open-suite
 
 ## Configuration
 
