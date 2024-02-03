@@ -99,30 +99,16 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-  docker-description:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Update Docker Hub description
-        uses: meeDamian/sync-readme@v1.0.6
-        with:
-          user: ${{ secrets.DOCKERHUB_USERNAME }}
-          pass: ${{ secrets.DOCKERHUB_TOKEN_FULL }}
-          slug: pmoscode/axelor-open-suite
-          description: true
-
-  docker-description_old:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Update Docker Hub description
-        uses: peter-evans/dockerhub-description@v3
-        with:
-          readme-filepath: README-DOCKER-HUB.md
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN_FULL }}
-          repository: pmoscode/axelor-open-suite
+#  docker-description:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v4
+#
+#      - name: Update Docker Hub description
+#        uses: peter-evans/dockerhub-description@v3
+#        with:
+#          readme-filepath: README-DOCKER-HUB.md
+#          username: ${{ secrets.DOCKERHUB_USERNAME }}
+#          password: ${{ secrets.DOCKERHUB_TOKEN_FULL }}
+#          repository: pmoscode/axelor-open-suite
