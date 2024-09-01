@@ -99,16 +99,17 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-#  docker-description:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Checkout
-#        uses: actions/checkout@v4
-#
-#      - name: Update Docker Hub description
-#        uses: peter-evans/dockerhub-description@v3
-#        with:
-#          readme-filepath: README-DOCKER-HUB.md
-#          username: ${{ secrets.DOCKERHUB_USERNAME }}
-#          password: ${{ secrets.DOCKERHUB_TOKEN_FULL }}
-#          repository: pmoscode/axelor-open-suite
+  docker-description:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Update Docker Hub description
+        uses: peter-evans/dockerhub-description@v4
+        with:
+          short-description: Open source ERP and BPM platform.
+          readme-filepath: README-DOCKER-HUB.md
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: pmoscode/axelor-open-suite
