@@ -37,7 +37,7 @@ If you want to run in inside Kubernetes, check this out: https://artifacthub.io/
 ## Configuration
 
 The [docker-compose.yaml](docker-compose.yaml) uses only some configuration options.
-To get all possible values, see here: https://docs.axelor.com/adk/6.1/dev-guide/application/config.html
+To get all possible values, see here: https://docs.axelor.com/adk/7.1/dev-guide/application/config.html
 
 These volumes are used to mount:
 
@@ -45,3 +45,10 @@ These volumes are used to mount:
 - Tomcat data: /bitnami/tomcat/webapps
 
 You should mount them, so that Axelor hasn't to be redeployed every time the container starts.
+
+## Defaults
+
+First login
+
+Username: admin
+Password: admin
