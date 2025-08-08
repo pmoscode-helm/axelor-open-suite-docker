@@ -1,4 +1,4 @@
-FROM bitnami/tomcat:9.0.80
+FROM bitnami/tomcat:11.0.10
 
 LABEL maintainer="info@pmoscode.de"
 
