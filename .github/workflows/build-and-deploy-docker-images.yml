@@ -110,7 +110,7 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Update Docker Hub description
-        uses: peter-evans/dockerhub-description@v4
+        uses: peter-evans/dockerhub-description@v5
         with:
           short-description: Open source ERP and BPM platform.
           readme-filepath: README-DOCKER-HUB.md
